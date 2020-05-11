@@ -2,6 +2,8 @@
 
 A random set of Cuis Smalltalk packages from my own. Feel free to include it on your projects if you find them useful :-)
 
+**Installation**: all of the files are bundled as packages, just drop the file into your Cuis image and then choose "Install package".
+
 ## Flaky Tests Detector
 
 This is a very simple tool that allows you to check if a test has a flaky behavior, that is, failing from time to time.
