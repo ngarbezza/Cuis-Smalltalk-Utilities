@@ -1,2 +1,17 @@
 # Cuis-Smalltalk-Utilities
-A random set of Cuis Smalltalk packages from my own
+
+A random set of Cuis Smalltalk packages from my own. Feel free to include it on your projects if you find them useful :-)
+
+## Flaky Tests Detector
+
+This is a very simple tool that allows you to check if a test has a flaky behavior, that is, failing from time to time.
+
+It's very simple to use this tool. Just right-click on a test method, and select the "Analyze test flakiness" and it'll run your test 100 times (can be changed if called programmatically) and it will display the percentage of failures, and a list of each execution.
+
+Here's a quick demo of this feature:
+
+![Flaky Tests Demo](/demos/flaky-tests-demo.gif)
+
+## Percentage object
+
+A simple class that represents percentages, plus a convenience method on Number that allows you to write things like: `50 percent of: 2000`.
