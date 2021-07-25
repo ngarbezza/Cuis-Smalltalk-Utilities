@@ -17,3 +17,14 @@ Here's a quick demo of this feature:
 ## Percentage object
 
 A simple class that represents percentages, plus a convenience method on Number that allows you to write things like: `50 percent of: 2000`.
+
+## Collaborations counter
+
+Small tool to count the number of collaborations (message sends) in a method. It displays the results in the Browser's annotation pane.
+
+To enable it, evaluate `Preferences enableAnnotationInfo: #collaborationsCount`.
+To disable it, evaluate `Preferences disableAnnotationInfo: #collaborationsCount`.
+
+Here's a quick demo of this tool:
+
+![Collaborations Counter Demo](/demos/collaborations-counter-demo.gif)
