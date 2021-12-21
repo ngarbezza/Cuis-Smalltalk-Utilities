@@ -28,3 +28,11 @@ To disable it, evaluate `Preferences disableAnnotationInfo: #collaborationsCount
 Here's a quick demo of this tool:
 
 ![Collaborations Counter Demo](/demos/collaborations-counter-demo.gif)
+
+## Examples Browser
+
+A tool that allows you to define examples for any method in the image, and browse them using a button in any Cuis' code browser.
+
+Demo:
+
+![Examples Browser Demo](/demos/cuis-examples-browser.gif)
