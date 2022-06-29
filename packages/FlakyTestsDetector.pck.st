@@ -1,36 +1,36 @@
-'From Cuis 5.0 [latest update: #4133] on 10 May 2020 at 8:53:34 pm'!
+'From Cuis 6.0 [latest update: #5330] on 28 June 2022 at 10:28:59 pm'!
 'Description A simple class that helps to run a test several times and see if it is a flaky test or not.'!
-!provides: 'FlakyTestsDetector' 1 1!
-SystemOrganization addCategory: #FlakyTestsDetector!
+!provides: 'FlakyTestsDetector' 1 2!
+SystemOrganization addCategory: 'FlakyTestsDetector'!
 
 
-!classDefinition: #FlakyTestReportWindow category: #FlakyTestsDetector!
+!classDefinition: #FlakyTestReportWindow category: 'FlakyTestsDetector'!
 SystemWindow subclass: #FlakyTestReportWindow
 	instanceVariableNames: 'selection resultsSummary testDescription'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'FlakyTestsDetector'!
-!classDefinition: 'FlakyTestReportWindow class' category: #FlakyTestsDetector!
+!classDefinition: 'FlakyTestReportWindow class' category: 'FlakyTestsDetector'!
 FlakyTestReportWindow class
 	instanceVariableNames: ''!
 
-!classDefinition: #FlakyTestAnalysis category: #FlakyTestsDetector!
+!classDefinition: #FlakyTestAnalysis category: 'FlakyTestsDetector'!
 Object subclass: #FlakyTestAnalysis
 	instanceVariableNames: 'testMethod currentSampleNumber results sampleSize'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'FlakyTestsDetector'!
-!classDefinition: 'FlakyTestAnalysis class' category: #FlakyTestsDetector!
+!classDefinition: 'FlakyTestAnalysis class' category: 'FlakyTestsDetector'!
 FlakyTestAnalysis class
 	instanceVariableNames: ''!
 
-!classDefinition: #FlakyTestAnalysisResult category: #FlakyTestsDetector!
+!classDefinition: #FlakyTestAnalysisResult category: 'FlakyTestsDetector'!
 Object subclass: #FlakyTestAnalysisResult
 	instanceVariableNames: 'testExecutions testMethod'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'FlakyTestsDetector'!
-!classDefinition: 'FlakyTestAnalysisResult class' category: #FlakyTestsDetector!
+!classDefinition: 'FlakyTestAnalysisResult class' category: 'FlakyTestsDetector'!
 FlakyTestAnalysisResult class
 	instanceVariableNames: ''!
 
@@ -98,15 +98,15 @@ withLeadingZeros: index
 
 	^ index printString padded: #left to: (model testResults size numberOfDigitsInBase: 10) with: $0! !
 
-!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 17:07:53'!
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
 buildFailureCountLabel
 
-	^ StringMorph contents: model failuresCount printString , ' failures'! !
+	^ self labelMorphClass contents: model failuresCount printString , ' failures'! !
 
-!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 20:13:45'!
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
 buildFlakinessPercentageLabel
 
-	^ StringMorph contents: self roundedFlakinessPercentage printString , '% failures'! !
+	^ self labelMorphClass contents: self roundedFlakinessPercentage printString , '% failures'! !
 
 !FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 20:50:23'!
 buildMorphicWindow
@@ -130,15 +130,15 @@ buildResultsSummary
 		addMorph: self buildSuccessCountLabel proportionalWidth: 0.25;
 		addMorph: self buildFailureCountLabel proportionalWidth: 0.25! !
 
-!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 17:07:42'!
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
 buildSuccessCountLabel
 
-	^ StringMorph contents: model successCount printString , ' successful'! !
+	^ self labelMorphClass contents: model successCount printString , ' successful'! !
 
-!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 19:41:18'!
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
 buildTestClassLabel
 
-	^ StringMorph contents: model testMethod methodClass printString! !
+	^ self labelMorphClass contents: model testMethod methodClass printString! !
 
 !FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 20:50:43'!
 buildTestDescription
@@ -158,20 +158,25 @@ buildTestExecutionsList
 		indexGetter: #selectionIndex
 		indexSetter: #selectionIndex:! !
 
-!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 20:20:04'!
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
 buildTestMethodLabel
 
-	^ StringMorph contents: model testMethod selector printString! !
+	^ self labelMorphClass contents: model testMethod selector printString! !
 
-!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 19:42:04'!
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
 buildTotalCountLabel
 
-	^ StringMorph contents: model totalCount printString , ' runs'! !
+	^ self labelMorphClass contents: model totalCount printString , ' runs'! !
 
 !FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 20:50:55'!
 initialExtent
 
 	^ 600@400! !
+
+!FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 6/28/2022 22:27:07'!
+labelMorphClass
+
+	^ LabelMorph! !
 
 !FlakyTestReportWindow methodsFor: 'GUI building' stamp: 'RNG 5/10/2020 20:27:38'!
 openInWorld
